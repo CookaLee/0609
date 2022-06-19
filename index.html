@@ -102,23 +102,23 @@
       }
 
       function updateUI() {
-        var d = getData(id, getType())
+        const d = getData(id, getType())
         if (d == null) return;
 
-        var text_area = document.getElementById("main_text");
+        const text_area = document.getElementById("main_text");
         text_area.textContent = d.text;
 
-        var img = document.getElementById("img_area")
+        const img = document.getElementById("img_area")
         img.src = "./img/" + d.img;
 
         for (var i = 0; i < d.선택지.length; i++) {
           const s = d.선택지[i]
-          var b = document.getElementById("q" + (i+1))
+          const b = document.getElementById("q" + (i+1))
           b.style.display="block";
           b.textContent = s.text
         }
         for (var i = d.선택지.length; i < 4; i++) {
-          var b = document.getElementById("q" + (i+1))
+          const b = document.getElementById("q" + (i+1))
           b.style.display="none"
           b.textContent = ""
         }
@@ -178,7 +178,6 @@
               <td>
                  <button id="q1" onclick="onButton1Click()"> </button>
               </td>
-
               <td>
                 <button id="q3" onclick="onButton3Click()"> </button>
               </td>

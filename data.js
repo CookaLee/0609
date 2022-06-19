@@ -47,12 +47,12 @@ var data =
                "text" : "동화책" 
             },
             { 
-               "type" : "c",
-               "text" : "소설책" 
-            }, 
-            { 
                "type" : "d",
                "text" : "잡지" 
+            }, 
+            { 
+               "type" : "c",
+               "text" : "소설책" 
             }, 
             { 
                "type" : "d",
