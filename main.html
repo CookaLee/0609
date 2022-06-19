@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      html{ 
+        height:  100%;
+        width:  100%;
+      }
+
+      body{ 
+        height:  100%;
+        width:  100%;
+        margin:  0;
+        background-color:  black;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      button {
+        background-color: #5f2eff; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px;
+      }
+
+      .text_area {
+        background-color: rgb(243, 163, 255);
+        padding: 10px;
+        max-width:  640px;
+        font-size: 20px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 640px;
+        max-height: 960px;
+        margin: auto;
+        display: flex;
+        flex-direction: column
+      }
+
+
+    </style>
+
+    <script src="data.js"></script>
+    <script type="text/javascript">
+      var main = data.main
+      var id = 0
+      var type = ""
+      const dic = {}
+      dic['a'] = 0
+      dic['b'] = 0
+      dic['c'] = 0
+      dic['d'] = 0
+
+      function getData(id, type=""){
+        for (key in data.main) {
+          const d = data.main[key]
+          if (d.type != null) {
+            if (d.type == type && d.id == id) { 
+              return d 
+            }
+          }
+          else if (d.id == id) {
+            return d 
+          }
+        }
+        return null
+      }
+      function setId (_id) {
+        id = _id
+        updateUI()
+      }
+      function showSelection() {
+        for (key in dic) {
+          console.log(key, dic[key])
+        }
+      }
+
+      function getType() {
+        var first = ''
+        var second = ''
+
+        if (dic['a'] > dic['b']) { first = 'a'; }
+        else { first = 'b' }
+
+        if (dic['c'] > dic['d']) { second = 'c'; }
+        else { second = 'd' }
+
+        type = first + second;
+        console.log("currentType : ", type)
+        return type;
+      }
+
+      function updateUI() {
+        var d = getData(id, getType())
+        if (d == null) return;
+
+        var text_area = document.getElementById("main_text");
+        text_area.textContent = d.text;
+
+        var img = document.getElementById("img_area")
+        img.src = "./img/" + d.img;
+
+        for (var i = 0; i < d.선택지.length; i++) {
+          const s = d.선택지[i]
+          var b = document.getElementById("q" + (i+1))
+          b.style.display="block";
+          b.textContent = s.text
+        }
+        for (var i = d.선택지.length; i < 4; i++) {
+          var b = document.getElementById("q" + (i+1))
+          b.style.display="none"
+          b.textContent = ""
+        }
+      }
+
+      function onButtonClick(index) {
+        const curr = getData(id, getType())
+        const type = curr.선택지[index].type
+        if (dic.hasOwnProperty(type)) {
+          dic[type] += 1
+        } else {
+          dic[type] = 1
+        }
+
+        if (curr.next) {
+          setId(curr.next)
+        }
+        else {
+          // goto curr.선택지[0].next;
+          window.location.href = curr.선택지[index].next;
+        }
+
+        showSelection();
+      }
+
+      function onButton1Click() {
+        onButtonClick(0)
+      }
+      function onButton2Click() {
+        onButtonClick(1)
+      }
+      function onButton3Click() {
+        onButtonClick(2)
+      }
+      function onButton4Click() {
+        onButtonClick(3)
+      }
+
+      window.onload = function() {
+        setId(1);
+      }      
+    </script>
+  </head>
+
+  <body>
+    <div class='container'>
+
+      <img id="img_area" src= 'img/테스트 화면_1.jpg' style="width:100%; max-width: 640px">
+
+      <div class="text_area">
+        <p id="main_text"> 태스트를 시작합니다. </p>
+
+        <div class="question_area">
+
+          <table>
+            <tr>
+              <td>
+                 <button id="q1" onclick="onButton1Click()"> </button>
+              </td>
+
+              <td>
+                <button id="q3" onclick="onButton3Click()"> </button>
+              </td>
+            </tr>
+              <td>
+                <button id="q2" onclick="onButton2Click()"> </button>
+              </td>
+              <td>
+                <button id="q4" onclick="onButton4Click()"> </button>
+              </td>
+            </tr>
+
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
