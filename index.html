@@ -63,8 +63,8 @@
       dic['d'] = 0
 
       function getData(id, type=""){
-        for (key in data.main) {
-          const d = data.main[key]
+        for (var i = 0; i < data.main.length; i++) {
+          const d = data.main[i]
           if (d.type != null) {
             if (d.type == type && d.id == id) { 
               return d 
@@ -99,7 +99,7 @@
         type = first + second;
         console.log("currentType : ", type)
         return type;
-      }
+      } // a, b, c, d 선택해서 ac, ad, bc, bd  결정하기
 
       function updateUI() {
         const d = getData(id, getType())
@@ -116,12 +116,13 @@
           const b = document.getElementById("q" + (i+1))
           b.style.display="block";
           b.textContent = s.text
-        }
+        } //선택지 값을 띄워주세요
+
         for (var i = d.선택지.length; i < 4; i++) {
           const b = document.getElementById("q" + (i+1))
           b.style.display="none"
           b.textContent = ""
-        }
+        } // 선택지 말고 나머지 q 영역은 안 보이게 해주세요
       }
 
       function onButtonClick(index) {
@@ -129,8 +130,6 @@
         const type = curr.선택지[index].type
         if (dic.hasOwnProperty(type)) {
           dic[type] += 1
-        } else {
-          dic[type] = 1
         }
 
         if (curr.next) {
@@ -141,8 +140,7 @@
           window.location.href = curr.선택지[index].next;
         }
 
-        showSelection();
-      }
+        showSelection(); //console에서 중간 결과 확인. 디버깅
 
       function onButton1Click() {
         onButtonClick(0)
@@ -159,7 +157,7 @@
 
       window.onload = function() {
         setId(1);
-      }      
+      }  // 함수 첫 시작    
     </script>
   </head>
 
