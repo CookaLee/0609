@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -99,30 +100,29 @@
         type = first + second;
         console.log("currentType : ", type)
         return type;
-      } // a, b, c, d 선택해서 ac, ad, bc, bd  결정하기
+      }
 
       function updateUI() {
-        const d = getData(id, getType())
+        var d = getData(id, getType())
         if (d == null) return;
 
-        const text_area = document.getElementById("main_text");
+        var text_area = document.getElementById("main_text");
         text_area.textContent = d.text;
 
-        const img = document.getElementById("img_area")
+        var img = document.getElementById("img_area")
         img.src = "./img/" + d.img;
 
         for (var i = 0; i < d.선택지.length; i++) {
           const s = d.선택지[i]
-          const b = document.getElementById("q" + (i+1))
+          var b = document.getElementById("q" + (i+1))
           b.style.display="block";
           b.textContent = s.text
-        } //선택지 값을 띄워주세요
-
+        }
         for (var i = d.선택지.length; i < 4; i++) {
-          const b = document.getElementById("q" + (i+1))
+          var b = document.getElementById("q" + (i+1))
           b.style.display="none"
           b.textContent = ""
-        } // 선택지 말고 나머지 q 영역은 안 보이게 해주세요
+        }
       }
 
       function onButtonClick(index) {
@@ -130,6 +130,8 @@
         const type = curr.선택지[index].type
         if (dic.hasOwnProperty(type)) {
           dic[type] += 1
+        } else {
+          dic[type] = 1
         }
 
         if (curr.next) {
@@ -140,7 +142,8 @@
           window.location.href = curr.선택지[index].next;
         }
 
-        showSelection(); //console에서 중간 결과 확인. 디버깅
+        showSelection();
+      }
 
       function onButton1Click() {
         onButtonClick(0)
@@ -157,7 +160,7 @@
 
       window.onload = function() {
         setId(1);
-      }  // 함수 첫 시작    
+      }      
     </script>
   </head>
 
@@ -167,7 +170,7 @@
       <img id="img_area" src= 'img/테스트 화면_1.jpg' style="width:100%; max-width: 640px">
 
       <div class="text_area">
-        <p id="main_text"> 테스트를 시작합니다. </p>
+        <p id="main_text"> 태스트를 시작합니다. </p>
 
         <div class="question_area">
 
@@ -176,6 +179,7 @@
               <td>
                  <button id="q1" onclick="onButton1Click()"> </button>
               </td>
+
               <td>
                 <button id="q3" onclick="onButton3Click()"> </button>
               </td>
