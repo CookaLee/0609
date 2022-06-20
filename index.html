@@ -63,8 +63,8 @@
       dic['d'] = 0
 
       function getData(id, type=""){
-        for (var i = 0; i < data.main.length; i++) {
-          const d = data.main[i]
+        for (key in data.main) {
+          const d = data.main[key]
           if (d.type != null) {
             if (d.type == type && d.id == id) { 
               return d 
@@ -167,7 +167,7 @@
       <img id="img_area" src= 'img/테스트 화면_1.jpg' style="width:100%; max-width: 640px">
 
       <div class="text_area">
-        <p id="main_text"> 태스트를 시작합니다. </p>
+        <p id="main_text"> 테스트를 시작합니다. </p>
 
         <div class="question_area">
 
@@ -196,3 +196,4 @@
   </body>
 
 </html>
+
