@@ -29,7 +29,7 @@
       }
 
       button {
-        background-color: #5f2eff; /* Green */
+        background-color: #5f2eff;
         border: none;
         color: white;
         padding: 15px 32px;
@@ -45,6 +45,11 @@
 
        button:hover{
         background:rgb(138, 68, 149)
+      }
+      @media (max-width: 800px) {
+        button:hover{
+        background: #5f2eff;
+      }
       }
       
       table {
@@ -159,7 +164,7 @@
           dic[type] += 1
         } else {
           dic[type] = 1
-        }
+        } // 버튼 누르면 dic이라는 구조체에 선택한 값이 들어갑니다
 
         if (curr.next) {
           setId(curr.next)
