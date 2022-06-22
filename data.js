@@ -194,13 +194,13 @@ var data =
             }, 
             { 
                "type" : "2",
-               "text" : "창문으로 나간다.",
-               "next" : "result_ocean.html"
+               "text" : "동굴로 나간다.",
+               "next" : "result_jungle.html"
             },
             { 
                "type" : "3",
-               "text" : "동굴로 나간다.",
-               "next" : "result_jungle.html"
+               "text" : "창문으로 나간다.",
+               "next" : "result_ocean.html"
             }
          ]
       },

@@ -143,12 +143,12 @@
           const s = d.선택지[i]
           var b = document.getElementById("q" + (i+1))
           b.style.display="block";
-          b.textContent = s.text //선택지 값 띄워주세요
+          b.innerHTML = s.text //선택지 값 띄워주세요
         }
         for (var i = d.선택지.length; i < 4; i++) {
           var b = document.getElementById("q" + (i+1))
           b.style.display="none"
-          b.textContent = "" //선택지 없는, 나머지 q영역은 안 보이게 
+          b.innerHTML = "" //선택지 없는, 나머지 q영역은 안 보이게 
         }
       }
 
