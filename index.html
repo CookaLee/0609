@@ -134,7 +134,7 @@
         if (d == null) return;
 
         var text_area = document.getElementById("main_text");
-        text_area.textContent = d.text;
+        text_area.innerHTML = d.text;
 
         var img = document.getElementById("img_area")
         img.src = "./img/" + d.img;
@@ -200,7 +200,7 @@
       <img id="img_area" src= 'img/테스트 화면_1.jpg' style="width:100%; max-width: 640px">
 
       <div class="text_area">
-        <p id="main_text"> 태스트를 시작합니다. </p>
+        <div id="main_text"> 태스트를 시작합니다. </div>
 
         <div class="question_area">
 
