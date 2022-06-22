@@ -200,7 +200,7 @@ var data =
             { 
                "type" : "3",
                "text" : "동굴로 나간다.",
-               "next" : "result_cave.html"
+               "next" : "result_jungle.html"
             }
          ]
       },
